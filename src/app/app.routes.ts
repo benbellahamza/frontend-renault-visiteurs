@@ -3,8 +3,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { FormulaireComponent } from './pages/formulaire/formulaire.component';
 import { ListeComponent } from './pages/liste/liste.component';
 import { ResponsableVisiteursComponent } from './pages/responsable-visiteurs/responsable-visiteurs.component';
-
-// ✅ Chemins corrigés pour les composants Admin
 import { AdminDashboardComponent } from './pages/admin-dashboard.component';
 import { AdminAjouterAgentComponent } from './pages/admin-ajouter-agent.component';
 import { AdminAjouterResponsableComponent } from './pages/admin-ajouter-responsable.component';
@@ -22,20 +20,13 @@ export const routes: Routes = [
     ]
   },
 
-  {
-    path: 'responsable',
-    component: ResponsableVisiteursComponent
-  },
+  // ✅ Responsable indépendant
+  { path: 'responsable', component: ResponsableVisiteursComponent },
 
-  {
-    path: 'admin',
-    component: AdminDashboardComponent,
-    children: [
-      { path: 'ajouter-agent', component: AdminAjouterAgentComponent },
-      { path: 'ajouter-responsable', component: AdminAjouterResponsableComponent },
-      { path: 'liste-agents', component: AdminListeAgentsComponent },
-      { path: 'liste-responsables', component: AdminListeResponsablesComponent },
-      { path: '', redirectTo: 'ajouter-agent', pathMatch: 'full' }
-    ]
-  }
+  // ✅ Admin routes séparées
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'admin/ajouter-agent', component: AdminAjouterAgentComponent },
+  { path: 'admin/ajouter-responsable', component: AdminAjouterResponsableComponent },
+  { path: 'admin/liste-agents', component: AdminListeAgentsComponent },
+  { path: 'admin/liste-responsables', component: AdminListeResponsablesComponent }
 ];
